@@ -2,13 +2,31 @@ import Header from "./components/Header.jsx"
 import {CORE_CONCEPTS} from "./data.js"
 import Core_concepts from "./components/core-concepts.jsx"
 import TabButton from "./components/TabButton.jsx";
-
-function handleClick(selectedButton){
-  console.log(selectedButton);
-}
+import { useState } from "react";
+import {EXAMPLES} from "./data.js"
 
 
 function App() {
+
+  const [Button, setButton ]= useState();
+
+  function handleClick(selectedButton){
+
+    setButton(selectedButton);
+    
+  }
+
+  let tabContent= <div>Please click a topic</div>;
+
+  if(Button){
+    tabContent= (<div id="tab-content"> 
+    <h3>{EXAMPLES[Button].title}</h3>
+    <p>{EXAMPLES[Button].description}</p>
+    <pre>
+    <code>{EXAMPLES[Button].code}</code>
+    </pre>
+  </div>);
+  }
   return (
     <div>
      <Header/>
@@ -16,10 +34,7 @@ function App() {
         <section  id ="core-concepts" >
           <h2>Core-Concepts </h2>
           <ul>
-          <Core_concepts image= {CORE_CONCEPTS[0].image} title= {CORE_CONCEPTS[0].title} description= {CORE_CONCEPTS[0].description} />
-          <Core_concepts image= {CORE_CONCEPTS[1].image} title= {CORE_CONCEPTS[1].title} description= {CORE_CONCEPTS[1].description} />
-          <Core_concepts image= {CORE_CONCEPTS[2].image} title= {CORE_CONCEPTS[2].title} description= {CORE_CONCEPTS[2].description} />
-          <Core_concepts {...CORE_CONCEPTS[3]} />
+            {CORE_CONCEPTS.map((item)=>  <Core_concepts {...item} /> )}
           </ul>
 
         </section>
@@ -27,12 +42,12 @@ function App() {
         <section id= "examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect= {()=>handleClick('Components')}>Components</TabButton>
-            <TabButton onSelect= {()=>handleClick('Props')}>Props</TabButton>
-            <TabButton onSelect= {()=>handleClick('States')}>States</TabButton>
-            <TabButton onSelect= {()=>handleClick('JSX')}>JSX</TabButton>
+            <TabButton isSelected= {Button=== 'components'} onSelect= {()=>handleClick('components')}>Components</TabButton>
+            <TabButton isSelected= {Button=== 'jsx'} onSelect= {()=>handleClick('jsx')}>Props</TabButton>
+            <TabButton isSelected= {Button=== 'props'} onSelect= {()=>handleClick('props')}>States</TabButton>
+            <TabButton isSelected= {Button=== 'state'} onSelect= {()=>handleClick('state')}>JSX</TabButton>
           </menu>
-          Dynamic Content
+          {tabContent}
         </section>
       </main>
     </div>
