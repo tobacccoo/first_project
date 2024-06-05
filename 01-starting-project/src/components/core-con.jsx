@@ -1,17 +1,17 @@
-import {CORE_CONCEPTS} from "./data.js"
-import Core_concepts from "./components/core-concepts.jsx"
+import {CORE_CONCEPTS} from "../data.js"
+import Core_concepts from "./core-concepts.jsx"
+import Section from "./Section.jsx";
 
-
-export default function corecon(){
+export default function Corecon(){
 
     return(
-        <section  id ="core-concepts" >
-          <h2>Core-Concepts </h2>
+        <Section  id ="Core-concepts" >
+          
           <ul>
             {CORE_CONCEPTS.map((item)=>  <Core_concepts {...item} /> )}
           </ul>
 
-        </section>
+        </Section>
 
     );
 }
