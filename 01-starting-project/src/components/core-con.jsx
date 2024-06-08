@@ -5,7 +5,7 @@ import Section from "./Section.jsx";
 export default function Corecon(){
 
     return(
-        <Section  id ="Core-concepts" >
+        <Section  id ="core-concepts" >
           
           <ul>
             {CORE_CONCEPTS.map((item)=>  <Core_concepts {...item} /> )}
