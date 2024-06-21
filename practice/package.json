@@ -1,0 +1,23 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "Scratch react app",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/tobacccoo/scratch_app.git)"
+  },
+  "keywords": [
+    "scratch",
+    "react",
+    "app",
+    "sarim"
+  ],
+  "author": "Sarim",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
